@@ -6,7 +6,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('localhost:27017/shoppingbuddy');
+mongoose.connect('mongodb://admin:123@ds123351.mlab.com:23351/shoppingbuddy');
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var dash = require('./routes/dash');
