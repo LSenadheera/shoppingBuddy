@@ -1,0 +1,159 @@
+<style>
+    input,textarea, select  {
+        margin: 10px;
+    }
+
+    input[type=checkbox]{
+        margin-left: 15px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-5">
+        <div class="well">
+            <form action="items/additem" method="post" >
+            <table>
+                <tr>
+                    <td>Item Name: </td>
+                    <td><input type="text" name="item_name" ></td>
+                </tr>
+
+                <tr>
+                    <td>Description:  </td>
+                    <td><textarea name="item_desc"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>Category: </td>
+                    <td>
+                        <select name="item_category" id="item_category">
+                            {{# each categories }}
+                                <article class="category">
+                                    <option value={{this.value}}>  {{this.name}}</option>
+                                </article>
+                            {{/each}}
+
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Item Code: </td>
+                    <td><input type="text" name="item_code" id="item_code"></td>
+                </tr>
+
+                <tr>
+                    <td>Brand: </td>
+                    <td><input type="text" name="item_brand"></td>
+                </tr>
+
+                <tr>
+                    <td>Unit: </td>
+                    <td>
+                        <select name="item_unit">
+                            {{# each units }}
+                                <article class="unit">
+                                    <option value={{this.value}}>  {{this.name}}</option>
+
+
+                                </article>
+                            {{/each}}
+
+                            <option value="lt">Litres</option>
+                            <option value="nos">NOS</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Price: </td>
+                    <td><input type="text" name="item_price"></td>
+                </tr>
+
+                <tr>
+                    <td>Image: </td>
+                    <td><input type="file" id="item-image-upload"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><img src="" id="item-image" width="150px"> </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" class="btn btn-primary" value="Add Item"></td>
+                </tr>
+
+
+            </table>
+                <input type="hidden" name="item_image" id="item_image" value="">
+            </form>
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="well">
+            Update Item <br>
+            <form action="items/get-data" method="get">
+            <table>
+                <tr>
+                    <td>
+                        Search Item:
+                    </td>
+                    <td>
+                        <input type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="checkbox">Name
+                        <input type="checkbox">Code
+                     </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+
+                        <input type="button" class="btn btn-primary" value="Search">
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="well">
+            Delete<br>
+            Search Item: <input type="text">
+            <input type="button" class="btn btn-primary" value="Search">
+
+        </div>
+    </div>
+</div>
+
+<div>
+
+
+
+
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="javascripts/imageUpload.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function(){
+        $("#item_category").change(function () {
+            $("#item_code").val(this.value);
+        });
+//        $('#item_category').change(function () {
+//            $('#item_code').val("CR");
+//        });
+    });
+
+
+//
+
+</script>

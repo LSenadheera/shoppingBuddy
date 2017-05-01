@@ -1,0 +1,35 @@
+<!--<h1>Home is here</h1>-->
+
+<style>
+    .col-md-2{
+        padding-left: 0px;
+        padding-right: 8px;
+
+    }
+
+    .well{
+        text-align: center;
+        padding: 6px;
+    }
+
+</style>
+
+<div class="row">
+
+        {{# each items }}
+        <div class="col-md-2">
+        <div class="well">
+            <article class="item">
+                <img src="{{this.image}}" width="130">
+                <p>Item: {{ this.name }}</p>
+                <p>Description: {{ this.desc }}</p>
+                <p>Brand: {{ this.brand }}</p>
+                <p>Price: {{ this.price }}</p>
+
+            </article>
+        </div>
+        </div>
+        {{/each}}
+
+
+</div>

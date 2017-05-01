@@ -1,0 +1,117 @@
+<script src="javascripts/promoImage.js"></script>
+
+<style>
+    input,textarea, select  {
+        margin: 10px;
+    }
+
+    input[type=checkbox]{
+        margin-left: 15px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4">
+        <div class="well">
+            <form action="promo/addPromo" method="post">
+            <table>
+                <tr>
+                    <td colspan="2" align="center">
+                        <img src="" id="promoImage" width="130">
+                        <input type="hidden" id="pImage" name="pImage">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Item: </td>
+                    <td> <select name="item_name" id="item_name">
+                        {{# each items }}
+                            <article class="item">
+                                <option value={{this.code}}>  {{this.name}} ({{this.code}})</option>
+
+
+                            </article>
+                        {{/each}}
+                    </select></td>
+                </tr>
+
+
+                <tr>
+                    <td>Start Date:  </td>
+                    <td><input type="date" name="promo_start_date"></td>
+                </tr>
+                <tr>
+                    <td>End Date:  </td>
+                    <td><input type="date" name="promo_end_date"></td>
+                </tr>
+                <tr>
+                    <td>Promotion: </td>
+                    <td><textarea name="promotion_desc"></textarea></td>
+                </tr>
+
+                <!--<tr>-->
+                <!--<td>Image: </td>-->
+                <!--<td><input type="file"></td>-->
+                <!--</tr>-->
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" class="btn btn-primary" value="Add Promotion"></td>
+                </tr>
+
+            </table>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+//    $(document).ready(function(){
+//        $("#item_name").change(function () {
+//
+//            var newT = document.getElementById('#item_name').value();
+//                    console.log(newT);
+//                }
+//            );
+//
+////            $("#item_code").val(this.value);
+////        $('#item_category').change(function () {
+////            $('#item_code').val("CR");
+////        });
+//    });
+//var promoImage = document.getElementById('item_name');
+//var fileUpload = document.getElementById('item-image-upload');
+
+// promoImage.addEventListener('change', function (event) {
+//var file = event.target.files[0];
+//var formData = new FormData();
+//formData.append('file', file);
+//formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+$(document).ready(function() {
+    $("#item_name").change(function () {
+        var data = $(this).val();
+        //console.log(data);
+             $.post('/promo/images', {datan: data}, function (res) {
+//            console.log(res);
+                 document.getElementById('promoImage').src = res;
+                 document.getElementById('pImage').value = res;
+        });
+//        axios({
+//            url: '/promo/images/',
+//            method: 'POST',
+//            headers: {'contentType': 'application/json'},
+//            data: JSON.stringify({number: 1})
+
+        });
+
+    });
+
+
+
+    //
+
+</script>
